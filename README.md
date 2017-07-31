@@ -1,6 +1,6 @@
 # Decision Tree
 
-2017 HDU CAMALAB 暑期ML研讨班 参加kaggle课内竞赛所写。用于井字棋判定输赢。
+2017 HDU CAMALAB 暑期ML研讨班 参加[kaggle课内竞赛](https://inclass.kaggle.com/c/hdu-cama)所写。用于井字棋判定输赢。
 
 2017/7/31
 - 完成ID3及CART算法。
