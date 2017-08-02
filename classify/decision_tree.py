@@ -155,18 +155,21 @@ class CART(object):
         self.labels = labels
 
     def GiniD(self, dataSet):
-        numEntries = len(dataSet)
-        labelCounts = {}
+        # numEntries = len(dataSet)
+        # labelCounts = {}
+        # label_tmp = dataSet[:, -1].astype(int)
+        # labelCounts_tmp = np.bincount(label_tmp)
+        # for label, num in enumerate(labelCounts_tmp):
+        #     labelCounts[label] = num
+        # p = 0.0
+        # for key in labelCounts:
+        #     prob = float(labelCounts[key]) / numEntries
+        #     # print prob
+        #     p += prob**2
         label_tmp = dataSet[:, -1].astype(int)
-        labelCounts_tmp = np.bincount(label_tmp)
-        for label, num in enumerate(labelCounts_tmp):
-            labelCounts[label] = num
-        p = 0.0
-        for key in labelCounts:
-            prob = float(labelCounts[key]) / numEntries
-            # print prob
-            p += prob**2
-        return 1.0 - p
+        probs = np.bincount(label_tmp)/float(len(label_tmp))
+        gini = 1- np.sum(np.square(probs))
+        return gini
 
     def splitDataSet(self, dataSet, axis, value):
         retDataSet = np.concatenate((dataSet[dataSet[:,axis] == value, :axis], dataSet[dataSet[:,axis] == value, axis+1:]), axis=1)
